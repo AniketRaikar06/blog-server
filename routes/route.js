@@ -9,7 +9,16 @@ import { authenticateToken, createNewToken } from '../controller/jwt-controller.
 import upload from '../utils/upload.js';
 
 const router = express.Router();
-router.use(express.static('build'));
+router.use(express.static('public'));
+router.get('/testroute',async(req,res)=>{
+    var response={}
+    response.error = false;
+    response.code = 0;
+    response.message="test route";
+    res.writeHead(200, {'content-type': 'application/json'});
+    res.write(JSON.stringify(response));
+    res.end();
+})
 router.post('/login', loginUser);
 router.post('/signup', singupUser);
 router.post('/logout', logoutUser);
