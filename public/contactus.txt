@@ -1,0 +1,116 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, intial-scale=1">
+<title>SAIMAHAVIR FOODS || Contact us</title>
+<link rel="stylesheet" href="style2.css">
+<link rel="stylesheet" href="style1.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+   <!-- yxaszwbepmhczmas-->
+   <section class="topxx" id="insta">
+	
+    <div class="top-nav-bar">
+        
+        <div class="search-box">
+            <div class="name">
+                <strong>SAI MAHAVIR </strong>
+            </div>
+        </div>
+    
+            <i class="fa fa-bars" id="menu-btn" onclick="openNav()"></i>
+            <i class="fa fa-times" id="close-btn" onclick="closeNav()"></i>
+           
+            <div class="nav">
+            <div class="nav001">
+                <a href="index.html">Home</a>
+                <a href="#" id="userdetails_desk"></a>
+            </div>
+        </div>
+    </div>
+    </section>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="color: #a45c40;">&times;</a>
+        <a href="#" id="userdetails"></a>
+        <div id="uid"></div>
+        <a href="index.html"><i class="fa fa-home"></i> Home</a>
+        <a href="privacypolicy.html"><i class="fa fa-user-secret"></i> Privacy Policy</a>
+        <a href="#" onclick="signOut()" class="btn-sign-out"><i class="fa fa-sign-out"></i> Logout</a>
+        </div>
+      </div>
+      
+      <script>
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "320px";
+      }
+      
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+      
+      </script>
+
+
+
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+document.getElementById('rev').addEventListener('submit', fetch);
+    function fetch(e){
+        e.preventDefault()
+        console.log("fetchn");
+        var mail = document.getElementById("mail").value
+        var  contact = document.getElementById("number").value;
+        var  message = document.getElementById("message").value;
+        smtpserver(mail,contact,message)
+        document.getElementById('rev').reset()
+    }
+
+    function smtpserver(x,y,z){
+    Email.send({
+    SecureToken:"2b31207e-bd6c-4c25-a041-73ca90b41fe9",
+    To:'saimahavirfoods@gmail.com',
+    // president.rca3141@gmail.com
+    From:'saimahavirfoods@gmail.com',
+    Subject: `${x} sent you a message, You have a new contact.`,
+    Body: `I want to discusss ${z} <br/>
+    Contact No : ${y}`
+        }).then((e)=>{
+            alert('your message has been sent, Thanks !')
+        })
+       
+        }
+</script>
+<section class="foot">
+    <div class="con">
+        <h4>SHOP FOR</h4>
+        <p>Explore | Foods | Snacks | Wafers | Chakli | Kachori</p>
+        <h4>KEEP IN TOUCH WITH</h4>
+        <p><a href="https://www.instagram.com/saimahavirfoods/?hl=en" target="_blank"><i class="fa fa-facebook-official"></i></a>
+           <a href="https://twitter.com/saimahavirfoods" target="_blank"><i class="fa fa-twitter"></i></a>
+           <a href="https://www.instagram.com/saimahavirfoods/?hl=en" target="_blank"><i class="fa fa-instagram"></i></a>
+           <a href="https://www.youtube.com/channel/UCzKABbeseHEL0zJoLfbOh5A/?guided_help_flow=5" target="_blank"><i class="fa fa-youtube-play"></i></a></p>
+        <h4>Connect</h4>
+        <p><a href="tel:9967029015">Contact Us</a> | <a href="#">About Us</a> | Blog | <a href="#">Privacy Policy</a></p>
+        <h4>Shop Address</h4>
+        <p>Shop No. 6,Jawahar Estate Building,<br>
+            Jawahar Nagar Road No. 1,<br>
+            Near BMC Market, <br>
+            Mumbai - 400062.
+        </p>
+        <p>Telephone: <b><a href="tel:9967029015">+91-9967029015</a></b></p>
+    </div>
+        <div class="copy">
+            <i class="fa fa-copyright"></i> 
+            <a href="http://www.saimahavir.in">www.saimahavir.in</a> 
+            <P>All rights reserved.</P></div>
+    </div>
+</section>
+
+</body>
+</html>

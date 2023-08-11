@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="../login1.css">
+  <meta name="viewport" content="width=device-width, intial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+	<title>Sai Mahavir - Admin Login</title>
+</head>
+<body>
+	<div class="container" id="container">
+		<div class="form-container log-in-container">
+			<div id="email" class="email">
+				<a href="./index.html"><h1>SAI MAHAVIR FOODS - ADMIN</h1></a>
+				<div class="social-container">
+					<a href="#" class="social" onclick="hide_email()"><i class="fa fa-phone fa-2x" style="padding: 10px;"></i></a>
+				</div>
+				<span>or use your account</span>
+                <input type="email" placeholder="Email" id="signemail" />
+				<input type="password" placeholder="Password" id="signpassword"/>
+				<a href="#">Forgot your password?</a><br/>
+				<button onclick="signIn()" class="mt-2">SIGN IN</button>
+			</div>
+
+      <div id="phone" class="phone">
+        <a href="./index.html"><h1>SAI MAHAVIR FOODS</h1></a>
+				<div class="social-container">
+					<a href="#" class="social"><i class="fa fa-phone fa-2x" style="padding: 10px;"></i></a>
+				</div>
+				<span>Use your phone number</span>
+        <input type="number" placeholder="enter contact no*" id="phoneno" />
+        <div id="recaptcha-container"></div>
+				<input type="number" placeholder="Enter OTP"  id="otpno"/>
+				<a href="#">Resend OTP ?</a><br/>
+				<button id="Loginphone" onclick="sendotp()">SEND OTP</button>
+        <button id="verifyotp" onclick="verify()">VERIFY</button>
+      </div>
+
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-right">
+					<h1>SAI MAHAVIR FOODS</h1>
+					<p>sign up and get latest deals and offers with online and offline orders.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+    <script>
+      function show(){
+            document.getElementById('phone').style.display = "none";
+            document.getElementById('email').style.display = "flex";
+        }
+        function hide_email(){
+            document.getElementById('phone').style.display = "flex";
+            document.getElementById('email').style.display = "none";
+        }
+
+
+		var firebaseConfig = {
+    apiKey: "AIzaSyCxYAhIWfApAoVuloS3zFMqIIM4ZM7XayI",
+    authDomain: "sai-mahavir.firebaseapp.com",
+    projectId: "sai-mahavir",
+    storageBucket: "sai-mahavir.appspot.com",
+    messagingSenderId: "310858203167",
+    appId: "1:310858203167:web:3633e7f06d79e1da9cd52a",
+    measurementId: "G-15HHZ18TKN"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.auth().onAuthStateChanged(function(user){
+  if(user){
+      console.log(user);
+      if(user.email){
+        window.location.replace("../admin/adminhome.html") ;
+      }
+     // 
+  }
+  else{
+    console.log('please sign in or sign up');
+  }
+});
+</script>
+<script src="./access.js"></script>
+</body>
+</html>

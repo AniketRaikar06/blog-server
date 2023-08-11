@@ -1,1 +1,589 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="/logo192.png"/><link rel="manifest" href="/manifest.json"/><title>Blog App - Aniket</title><script defer="defer" src="/static/js/main.34626497.js"></script><link href="/static/css/main.88b0e3e4.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, intial-scale=1">
+<title>Online Shopping site in india: Shop Wafers, Namkeens, Dryfruits & Syrups much more ...</title>
+<link rel="stylesheet" href="style1.css">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" href="client.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-analytics.js"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://js.stripe.com/v3/"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1577392343386208" crossorigin="anonymous"></script>
+</head>
+<body>
+<script>
+
+//this will also disable full page
+$("body").on("contextmenu",function(e){
+ return false;
+});
+	document.onkeydown = function(e) {
+    
+    //prevent key F12
+    if(event.keyCode == 123) {
+        return false;
+    }
+
+    //prevent CTRL + Shift + I
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
+        return false;
+    }
+
+    //prevent CTRL + Shift + J
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
+        return false;
+    }
+    //prevent CTRL + Shift + C
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)){
+        return false;
+    }
+    //prevent CTRL + U 
+    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){ 
+        return false; 
+    } 
+}
+</script>
+<section class="baap">
+<div class="alert-box">
+	
+</div>
+<div class="mainload">
+	<div class="loader-wrapper"> 
+		<span class="loader"></span>
+	</div>
+</div>
+
+
+	<!--<div  id="EPsign">
+			<div class="app">
+			<a href="https://api.whatsapp.com/send?phone=919967029015&text=Hi" target="_blank">
+			<img src="images/logo1.png"></a>
+			
+	</div>
+<div class="holder">
+		<img src="blocks/logo.png"><br>
+		<h1 href="#">Sign Up</h1>
+		<input type="text" class="form-control" id="semail" required>
+		<input type="text" class="form-control" id="spassword" required>
+		<button type="submit" class="btn btn-primary" onclick="signUp()">Sign Up</button>
+</div>
+<div class="holder">
+	<h1>Sign In</h1>
+	<input type="text" class="form-control" id="signemail" required>
+	<input type="text" class="form-control" id="signpassword" required>
+	<button type="submit" onclick="signIn()">Sign In</button>
+  <button onclick="signOut()">Sign Out</button>
+</div>
+</div>
+-->
+
+	<!-- Authentication!
+	<section class="auth" >
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header" style="letter-spacing: 1px;">SAI MAHAVIR</div>
+						<div class="card-body">
+							<input type="radio" id="summer" onclick="authc()" name="auth"><a href="#" >Create an account</a><br>
+							<span id="signxup">
+							<input type="text" placeholder="Enter your valid email"  id="semail" required ><br>
+							<input type="text" placeholder="Set password"  id="spassword" required><br>
+							<button type="submit" class="btn btn-primary" onclick="signUp()">Sign Up</button>
+							</span>
+							<input type="radio" id="winter" onclick="auths()" name="auth"><a href="">Sign In</a><br>
+							<span id="signxin">
+							<input type="text" placeholder="Enter email address" id="signemail" required><br>
+							<input type="text" placeholder="Enter your password" id="signpassword" required><br>
+							<button type="submit" class="btn btn-primary" onclick="signIn()">Sign In</button>
+							</span>
+					
+							<input type="radio" id="rain" onclick="authr()" name="auth"><a href="#" >
+							Sign In using Mobile Number</a><br>
+							
+							<button class="btn btn-primary" id="ex">Continue</button>
+							
+							<div class="text-muted"><input type="checkbox" required> By Continuing you agree to 
+								Sai Mahavir Conditions of use and <a href="privacypolicy.html">Privacy Policy</a></div>
+						
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section> -->
+<!-- select add address!-->
+<section class="success">
+	<img src="blocks/success.png">
+	<h2><i class="fa fa-check" style="padding: 4px; color: green;border:2px solid green;font-size: 16px;border-radius: 50%; margin :0 5px;"></i>Your Order is Confirmed ! </h2>
+	<p>We sent you a confirmation e-mail regarding this order,  please check your inbox or spam !</p>
+	<div class="order_details"></div>
+	<p>you will be redirected , please wait if not  
+		<br/> <a href="https://www.saimahavir.in">click here</a>
+	</p>
+</section>
+
+
+<section class="payment">
+	<h5 onclick="paymentclose()">Back</h5>
+	<div class="upi">
+		<h2>Select Payment</h2>
+		<a href="#" onclick="stripe1('stripe')"><img src="blocks/stripe.png"/></a>
+		<form id="payment-form">
+			<div id="payment-element">
+			  <!-- Elements will create form elements here -->
+			</div>
+			<button id="submit">Submit</button>
+			<div id="error-message">
+			  <!-- Display error message to your customers here <a href="#"><img src="blocks/paytm1.png"/></a>-->
+			</div>
+		  </form>
+		  <a href="#" onclick="stripe1('razorpay')" style="padding:20px 15px"><img src="https://razorpay.com/docs/build/browser/static/razorpay-logo.ee1a2273.svg"/></a>
+	</div>
+	<div class="cash">
+		<form >
+			<h2>Cash On Delivery</h2><br>
+			<p>To cash on delivery click on the purchase button below.</p>
+			<span class="payment-flex">
+				<p>Final Amount</p>
+				<span class="pay-total-price">00</span>
+			</span><br>
+			<span class="payment-flex">
+				<p>GST Tax ( % ) Included </p>
+				<span class="tax-collection-price">0% </span>
+			</span><br>
+			<span class="payment-flex">
+				<p>Cash Collection Charges</p>
+				<span class="pay-collection-price">00</span>
+			</span><br>
+			<span class="payment-flex">
+				<p>Total Payable Amount</p>
+				<span class="pay-sum-price">00 </span>
+			</span><br>
+			<span class= "date-time"></span>
+			<span><button type="submit" class="btn btn-purchase" style="margin-top: 10px;">Purchase - Cash on Delivery</button></span>
+		</form>
+	</div>
+	
+</section>
+
+<section class="fetch">
+
+<div class="orderdetails_holder">
+	<h5 onclick="hidecart()">Back</h5>
+	<div class="order-manipulation">
+		<img src="svg elements/noorder.png" style="width:100%;height:'auto';"> 
+	</div>
+	
+	<!--<form id="catch">
+	<h2>Enter your Order ID</h2>
+	<input type="number" id="fetchorderid" placeholder="Enter Your Valid Order Id (numbers only)"><br>
+	<p style="padding-left:10px;">please check your email for past order details</p>
+	<button type="submit" class="btn btn-primary" id="fetchdata">submit</button>   
+	</form>-->
+	
+</div>
+</section>
+<!-- users cart block 
+	<h5><span>cart</span>  <i class="fa fa-angle-right"></i> 
+				<span class="no-item"> 0 items </span> <i class="fa fa-angle-right"></i> <span class="back" onclick="hidecart()">back</span></h5>!-->
+<section class="addtocart">
+ 			<h5>My Bag<p class="no-item"> 0 item</p> <i class="fa fa-times-circle" onclick="hidecart()"></i></h5>
+ 			<div class="add">
+				<form id="ad-address">
+					<i class="fa fa-times" onclick="addressclose()"></i><br>
+					<h1>Ship to,</h1> 
+					<h6>Delivery Information</h6>
+					<input type="text" name="name" placeholder="* Receiver's name" id="add_rc" required><br/>
+					<input type="email" name="name" placeholder="* Receiver's email" id="add_email" required><br/>
+					<input type="number" placeholder="* Phone number" id="add_contact" required>
+					<h6>Address</h6>
+					<input type="number" placeholder="* Zip code" id="add_zip" required><br>
+					<input type="text" placeholder="* Address" id="add_add" required><br>
+					<input type="text" id="st" placeholder="* State*" required><input type="text" id="ci" placeholder="* City" required><br>
+					<button type="submit" id="save" class="btn btn-primary">Save</button>
+				</form>
+			</div>
+ 			<div class="cart">
+	            <div class="cart-items">
+					<div class="imgc"><img src="svg elements/emptycart.png" style="height:auto;"></div>
+	            </div>
+
+				<div class="custom-add">	
+					<div class="address_holder">
+					</div>	
+				</div>
+
+	            <div class="cart-total">
+	            	<h2>PRICE SUMMARY</h2>
+	            	<label><sapn class="inc1">Delivery Fee</sapn> &#8377 <span class="incp"> 00</span></label>
+	            	<label><sapn class="inc1">Bag Discount</sapn> &#8377 <span class="incd"> 00</span></label>
+	            	<label><sapn class="inc1">Sub Total</sapn>  &#8377 <span class="incs"> 00</span></label>
+					<label><sapn class="inc1">Coupon Applied </sapn>  &#8377  <span class="incc"> 00 </span></label>
+					<div class="discount">
+						<input type="text" id="coupon" placeholder="Enter Coupon Code">
+						<button class="btn" onclick="updateCartTotal()">Apply</button>
+						<br/>
+						<div class="error small"></div>
+					</div>
+					<p>you are saving <span class="incd"> 00</span> on this order</p>
+	            	<span class="cart-flex">
+	            	<div class="car">
+	                <strong class="cart-total-title">Total</strong><br>
+	                <label>&#8377<span class="cart-total-price">00</span></label>
+	            	</div>
+	            	<div class="cont">
+						<a href="./login.html"><button class="btn btn-notify">please sign in to place order</button></a>
+	            		<button class="btn btn-address" onclick="address()">Add Address</button>
+						<button class="btn btn-view-address" onclick="view()">View Address</button>
+						<button class="btn btn-cart-view" onclick="displaycart()">View Cart</button>
+	            		<button class="btn btn-payment" onclick="payment()">Add Payment</button>
+
+	            	</div>
+	            	</span>
+	            </div>
+				
+        	</div>
+        	 
+           
+</section>
+
+
+
+
+<section class="topxx" id="insta">
+<div class="top-nav-bar">
+	
+	<div class="search-box">
+		<div class="name" onclick="returnhome()">
+			<img src="https://ik.imagekit.io/bk4vkk0xf/saimahavir/logos.jpeg"/> 
+		</div>
+	</div>
+
+		<i class="fa fa-bars" id="menu-btn" onclick="openNav()"></i>
+		<i class="fa fa-times" id="close-btn" onclick="closeNav()"></i>
+		<span id="hiddencart"><i class="fa fa-shopping-bag" onclick="displaycart()"></i><span class="item_number">0</span></span>
+		<div class="nav">
+		<div class="nav001">
+			<a onclick="hidecart(0,1,2,3,4,5,6)">Home</a>
+			<a onclick="products(0,1,2,3,4,5,6)"> Products</a>
+			<a onclick="displayorder()">Orders</a>
+			<a><i class="fa fa-shopping-bag" onclick="displaycart()"></i><span class="item_number">0</span></a>
+			<div id="userdetails_desk"></div>
+		</div>
+	</div>
+</div>
+</section>
+
+ 
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="color: #a45c40;">&times;</a>
+  <a id="userdetails"></a>
+  <div id="uid"></div>
+  <a onclick="hidecart(0,1,2,3,4,5,6)"><i class="fa fa-home"></i> Home</a>
+  <a onclick="products(0,1,2,3,4,5,6)"><i class="fa fa-list-alt"></i> Products</a>
+  <a onclick="displayorder()"><i class="fa fa-check-square-o"></i> My Orders</a>
+  <a href="contactus.html"><i class="fa fa-phone"></i> Contact Us</a>
+  <a onclick="signOut()" class="btn-sign-out"><i class="fa fa-sign-out"></i> Logout</a>
+  <div id="message">
+	<div class="mess">
+		<h2>Get 10% Flat -</h2>
+		<p>use code Flat10 and get 10% off <br/> offer valid till 01 June 2023.<br/>
+			<small>T&C. applied.</small>
+		</p>
+	</div>
+	<div class="mess">
+		<h2>Get 20% Flat - </h2>
+		<p>use code Flat20 and get 20% off <br/> offer valid till 01 June 2023.<br/>
+			<small>T&C. applied.</small>
+		</p>
+	</div>
+  </div>
+</div>
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "320px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
+</script>
+
+<span class="rest">
+<p id="loc" onclick="Toggle()"><i class="fa fa-map-marker"></i> please enter the pincode to check delivery status.</p>
+
+<div id="pincode">
+	<p style="font-weight: bold; margin: 5px 0px 0px 5px;">Choose your location <span onclick="Togglehide()"style="padding-left: 20px; font-size: 20px;">&times;</span></p>
+	<p style="font-size: 14px; margin: 5px 0px 0px 5px;">Select a delivery location to see product availability and delivery options</p>
+	<a href="./login.html"><button class="btn btn-addresses" style="color:#fff;">please sign-in</button></a>
+	<button class="btn btn-addproduct" onclick="products(1,0,2,3,4,5,6)" style="color:#fff;">Add product to your cart</button>
+	<p style="font-size: 16px; margin: 5px 0px 10px 5px; color: #0099e3;"> <i class="fa fa-map-marker"></i> Enter an indian pincode </p>
+	<input type="number" style="width: 100%;" required class="form-control" id="pin" placeholder="Your Pincode">
+	<div class="alert alert-danger mt-2 mb-0">Delivery Unavailable !</div>
+	<div class="alert alert-success mt-2 mb-0">Yes, you can place order.</div>
+	<button class="btn btn-add " onclick="pincode()" style="color:#fff;">Apply</button>
+</div>
+<script>
+
+</script>
+<section class="slider-con">
+	<div class="slider">
+	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+		<ol class="carousel-indicators">
+		<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+		<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+		</ol>
+		<div class="carousel-inner" id="addslide">
+	  	
+	  	</div>
+	</div>
+  	</div>
+	</div>
+	
+	<div class="list">
+	<div class="listchild1"><img src="https://ik.imagekit.io/bk4vkk0xf/saimahavir/images/rifle.png"></div>
+	<div class="listchild2">
+		<h2 style="color: #000; padding: 0px;margin: 10px 10px 0px 10px;">Welcome !</h2>
+		<p style="color: #222; padding: 0px;margin: 5px 10px;">sign in for your best<br/> experience</p>
+		<a href="login.html" style="color: #222; padding: 0px;margin: 0px 0px 10px 10px;"> <button class="btn btn-primary mt-4" style="background-color: #111;border: none;">sign in securely</button></a>
+	</br>
+		<a href="./login.html" style="padding-left:12px ; color:#000;">create an account</a>
+	</div>
+	<div class="listchild2">
+		<h2 style="color: #000; padding: 0px;margin: 10px 10px 0px 10px;">Welcome <br/><p id="loggeduser"></p></h2>
+		<p style="color: #222; padding: 0px;margin: 5px 10px;">successfully logged in<br/> Thank You.</p>
+		 <button class="btn-primary1 mt-2 ml-2" onclick="products(1)">Add Products</button>
+	</div>
+	</div>
+</section>
+<div class="cat">
+	<div class="pro1">
+		<img src="https://ik.imagekit.io/bk4vkk0xf/saimahavir/images/red.png"  onclick="products(0)"> 
+		<p>Snacks</p>
+	</div>
+	<div class="pro1">
+		<img src="https://ik.imagekit.io/bk4vkk0xf/saimahavir/originals/pista.jpg"  onclick="products(1)"> 
+		<p>Dryfruits</p>
+	</div>
+</div>
+<!--
+<h3>Featured Products</h3>
+<div class="row1 reveal">
+	<div id="check"></div>
+</div>-->
+<h3>Trending Snacks & Dryfruits</h3>
+<hr/>
+<div class="middlepart">
+	<div class="inmiddle">
+		<img src="https://ik.imagekit.io/bk4vkk0xf/saimahavir/images/rifle.png"/>
+		<div class="detail">
+			<p>4.8 <i class="fa fa-star"></i></p>
+			<p>Potato Rifle Wafer</p>
+			<p>&#8377 60 10% off</p>
+			<button class="btn-view-product" onclick="openproductpage('Red Chilli Potato Wafer Rifle','Wafer','home')">View Product</button>
+		</div>
+	</div>
+	<div class="inmiddle">
+		<img src="https://ik.imagekit.io/bk4vkk0xf/saimahavir/images/besan.png"/>
+		<div class="detail">
+			<p>4.9 <i class="fa fa-star"></i></p>
+			<p>Besan Papdi</p>
+			<p>&#8377 50 10% off</p>
+			<button class="btn-view-product" onclick="openproductpage('Besan Papdi - Masti','Wafer','home')">View Product</button>
+		</div>
+	</div>
+	<div class="inmiddle">
+		<img src="https://ik.imagekit.io/bk4vkk0xf/saimahavir/images/yellow.jpeg"/>
+		<div class="detail">
+			<p>4.6 <i class="fa fa-star"></i></p>
+			<p>Banana Wafer</p>
+			<p>&#8377 80 10% off</p>
+			<button class="btn-view-product" onclick="openproductpage('Yellow Kerala Banana Wafer','Wafer','home')">View Product</button>
+		</div>
+	</div>
+	<div class="inmiddle">
+		<img src="https://ik.imagekit.io/bk4vkk0xf/saimahavir/images/tikhamix.png"/>
+		<div class="detail">
+			<p>4.8 <i class="fa fa-star"></i></p>
+			<p>Madras Mixture</p>
+			<p>&#8377 60 10% off</p>
+			<button class="btn-view-product" onclick="openproductpage('Chilli / Tikha Madras','Wafer','home')">View Product</button>
+		</div>
+	</div>
+	<div class="inmiddle">
+		<img src="https://ik.imagekit.io/bk4vkk0xf/saimahavir/images/20210901_171926.png"/>
+		<div class="detail">
+			<p>4.8 <i class="fa fa-star"></i></p>
+			<p>Special Potato Wafer</p>
+			<p>&#8377 70 10% off</p>
+			<button class="btn-view-product" onclick="openproductpage('Potato Wafer - Lovely','home')">View Product</button>
+		</div>
+	</div>
+</div>
+<div class="middlepart">
+	<div class="inmiddle">
+		<img src="https://ik.imagekit.io/bk4vkk0xf/saimahavir/originals/kaju.png"/>
+		<div class="detail">
+			<p>4.8 <i class="fa fa-star"></i></p>
+			<p>Cashew | Kaju</p>
+			<p>&#8377 199 10% off</p>
+			<button class="btn-view-product" onclick="openproductpage('Cashew | Kaju','Dryfruits','home')">View Product</button>
+		</div>
+	</div>
+	<div class="inmiddle">
+		<img src="https://ik.imagekit.io/bk4vkk0xf/saimahavir/originals/badam.jpg"/>
+		<div class="detail">
+			<p>4.9 <i class="fa fa-star"></i></p>
+			<p>Almond | Badam</p>
+			<p>&#8377 199 10% off</p>
+			<button class="btn-view-product" onclick="openproductpage('Almond | Badam','Dryfruits','home')">View Product</button>
+		</div>
+	</div>
+	<div class="inmiddle">
+		<img src="https://ik.imagekit.io/bk4vkk0xf/saimahavir/originals/pista.jpg"/>
+		<div class="detail">
+			<p>4.6 <i class="fa fa-star"></i></p>
+			<p>Pistachio | Pista</p>
+			<p>&#8377 399 10% off</p>
+			<button class="btn-view-product" onclick="openproductpage('Pistachio | Pista','Dryfruits','home')">View Product</button>
+		</div>
+	</div>
+	<div class="inmiddle">
+		<img src="https://ik.imagekit.io/bk4vkk0xf/saimahavir/originals/akhrot.jpg"/>
+		<div class="detail">
+			<p>4.5 <i class="fa fa-star"></i></p>
+			<p>Walnut | Akhrot</p>
+			<p>&#8377 399 10% off</p>
+			<button class="btn-view-product" onclick="openproductpage('Walnut | Akhrot','Dryfruits','home')">View Product</button>
+		</div>
+	</div>
+	<div class="inmiddle">
+		<img src="https://ik.imagekit.io/bk4vkk0xf/saimahavir/originals/makhana.jpg"/>
+		<div class="detail">
+			<p>4.8 <i class="fa fa-star"></i></p>
+			<p>Fox nuts | Makhana</p>
+			<p>&#8377 199 10% off</p>
+			<button class="btn-view-product" onclick="openproductpage('Fox nuts | Makhana','Dryfruits','home')">View Product</button>
+		</div>
+	</div>
+</div>
+</span>
+
+<section class="render">
+	<div class="skeleton">
+	<div class="product-outer">
+		<div class="ownslider">
+		<i class="fa"></i>
+		<div class="sk-img"></div>
+		</div>
+		<div class="cont">
+		<p class="title"></p>
+		<p class="desc"></p>
+		<p class="price"></p> 
+		<p class="tag"></p>
+		<div class="size">
+		<p></p>
+		<p></p>
+		</div>
+		<p class="p-type"></p>
+		<button class="btn shop-item-button-new"></button>
+		</div>
+	  </div>
+		<div class="product-detail-des">
+		<p></p>
+		<p class="details"></p>
+		</div>
+	</div>
+</section>
+
+<div class="products">
+	<div class="products-details">
+		<i class="fa fa-arrow-left" onclick="returnhome()"></i>
+		<p>Snacks <br/>
+		<span class="pnumber"></span></p>
+	</div>		
+	<div class="row" id="ajioproducts"></div>
+</div>
+<div class="products">
+	<div class="products-details">
+		<i class="fa fa-arrow-left" onclick="returnhome()"></i>
+		<p>Dryfruits <br/>
+		<span class="pnumber"></span></p>
+	</div>		
+	<div class="row" id="dryfruits"></div>
+</div>
+<div class="products">
+	<div class="products-details">
+		<i class="fa fa-arrow-left" onclick="returnhome()"></i>
+		<p>Kurta's<br/>
+		<span class="pnumber"></span></p>
+	</div>		
+	<div class="row" id="kurta"></div>
+</div>
+<section class="foot">
+		<div class="con">
+			<h4>SHOP FOR</h4>
+			<p>Explore | Snacks | Dryfruits | Chakli | Wafers</p>
+			<h4>KEEP IN TOUCH WITH</h4>
+			<p><a href="https://www.instagram.com/saimahavirfoods/?hl=en" target="_blank"><i class="fa fa-facebook-official"></i></a>
+			   <a href="https://twitter.com/saimahavirfoods" target="_blank"><i class="fa fa-twitter"></i></a>
+			   <a href="https://www.instagram.com/saimahavirfoods/?hl=en" target="_blank"><i class="fa fa-instagram"></i></a>
+			   <a href="https://www.youtube.com/channel/UCzKABbeseHEL0zJoLfbOh5A/?guided_help_flow=5" target="_blank"><i class="fa fa-youtube-play"></i></a></p>
+			<h4>Connect</h4>
+			<p><a href="/aboutus.html">About Us</a> | <a href="/contactus.html">Contact Us</a> | <a href="/privacypolicy.html">Privacy Policy</a>
+			|<a href="/refundpolicy.html">Refund or Cancellation Policy</a> | <a href="/termsandcondition.html">Terms and Condition</a> |
+			 <a href="/shipping.html">Shipping & Delivery</a></p>
+			<div class="paymenticon">
+				<img src="blocks/stripe.png">
+				<img src="blocks/paytm1.png">
+				<img src="https://razorpay.com/docs/build/browser/static/razorpay-logo.ee1a2273.svg">
+			</div>
+		</div>
+			<div class="copy">
+				<i class="fa fa-copyright"></i> 
+				<a href="http://www.saimahavir.in">www.saimahavir.in v1.1.6</a> 
+		</div>
+</section>
+<div class="alertbottom">
+	<p>website built on a SPA(Single Page Application) don't press back button while doing checkout.
+	currently we are not serving !!!
+	</p>
+	<i class="fa fa-close" onclick="hidebottomalert()"></i>
+</div>
+<!--<div class="footer_tab">
+	<ul>
+		<li onclick="returnhome()">
+			<i class="fa fa-home"></i>
+			<p>Home</p>
+		</li>
+		<li onclick="displaycart()">
+			<i class="fa fa-shopping-cart"></i>
+			<p>Cart</p>
+		</li>
+		<li onclick="products(0,1,2,3,4,5,6)">
+			<i class="fa fa-list-alt"></i>
+			<p>Products</p>
+		</li>
+		<li  onclick="displayorder()">
+			<i class="fa fa-check-square-o"></i>
+			<p>Orders</p>
+		</li>
+	</ul>
+</div>-->
+</section>
+<script src="controlaccess.js"></script>
+</body>
+</html>

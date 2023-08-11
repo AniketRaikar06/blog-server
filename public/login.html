@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="login.css">
+  <meta name="viewport" content="width=device-width, intial-scale=1">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Sai Mahavir Foods - Login / Registration</title>
+</head>
+<body>
+	<div class="container" id="container">
+    <div class="alert-box">
+	
+    </div>
+    <div class="mainload">
+      <div class="loader-wrapper"> 
+        <span class="loader"></span>
+      </div>
+    </div>
+		<div class="form-container log-in-container">
+			<div id="email" class="email">
+				<a href="./index.html" class="logo"><h1>Sai Mahavir Foods</h1></a>
+				<div class="social-container">
+					<a href="#" class="social"><i class="fa fa-envelope fa-2x" style="padding: 10px;"></i></a>
+				</div>
+				<div id="email-signup">
+          <span>or use your <span onclick="hide_email()" class="main">Mobile Number</span></span>
+          <input type="email" placeholder="Email" id="semail" />
+          <input type="password" placeholder="Password" id="spassword"/>
+          <button onclick="signUp()" class="mt-2">SIGN UP</button>
+          <p>have an account ? please <span onclick="showsignin()" class="main">Sign In!</span></p>
+        </div>
+        <div id="email-signin">
+          <span>or use your <span onclick="hide_email()" class="main">Mobile Number</span></span>
+          <input type="email" placeholder="Email" id="signemail" />
+          <input type="password" placeholder="Password" id="signpassword"/>
+          <a href="#">Forgot your password?</a><br/>
+          <button onclick="signIn()" class="mt-2">SIGN IN</button>
+          <p>don't have an account ? please <span onclick="showsignup()" class="main">Sign Up !</span></p>
+        </div>
+			</div>
+
+      <div id="phone" class="phone">
+        <a href="./index.html"  class="logo"><h1>Sai Mahavir Foods</h1></a>
+				<div class="social-container">
+					<a href="#" class="social"><i class="fa fa-phone fa-2x" style="padding: 10px;"></i></a>
+				</div>
+				<span>or use your<span onclick="show()" class="main">Email</span></span>
+        <input type="number" placeholder="enter contact no*" id="phoneno"/>
+        <div id="recaptcha-container"></div>
+				<input type="number" placeholder="Enter OTP"  id="otpno"/>
+				<a href="#">Resend OTP ?</a><br/>
+				<button id="Loginphone" onclick="sendotp()">SEND OTP</button>
+        <button id="verifyotp" onclick="verify()">VERIFY</button>
+
+        <div class="googlelogin">
+          <div class="glogin" onclick="googlelogin()">
+            <img src="./images/google_icon.png"> 
+            <p>Google Login</p>
+          </div>
+          <div class="glogin" onclick="facebooklogin()">
+            <img src="./images/facebook_icon.png"> 
+            <p>Facebook Login</p>
+          </div>
+        </div>
+      </div>
+
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-right">
+					<h1>Sai Mahavir Foods</h1>
+					<p>sign up and get latest deals and offers with online and offline orders.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+<script>
+  function showloader(){
+      $('.mainload').fadeIn('slow')
+    }
+    function hideloader(){
+      $('.mainload').delay(500).fadeOut();
+    }
+    function loading(time){
+      $('.mainload').fadeIn('slow',function(){
+        $('.mainload').delay(time).fadeOut();
+      })
+    }
+      function show(){
+            document.getElementById('phone').style.display = "none";
+            document.getElementById('email').style.display = "flex";
+        }
+        function showsignup(){            
+            document.getElementById('email-signup').style.display="block";
+            document.getElementById('email-signin').style.display="none";
+        }
+        function showsignin(){            
+            document.getElementById('email-signup').style.display="none";
+            document.getElementById('email-signin').style.display="block";
+        }
+        function hide_email(){
+            document.getElementById('phone').style.display = "flex";
+            document.getElementById('email').style.display = "none";
+        }
+
+
+    var firebaseConfig = {
+    apiKey: "AIzaSyCxYAhIWfApAoVuloS3zFMqIIM4ZM7XayI",
+    authDomain: "sai-mahavir.firebaseapp.com",
+    projectId: "sai-mahavir",
+    storageBucket: "sai-mahavir.appspot.com",
+    messagingSenderId: "310858203167",
+    appId: "1:310858203167:web:3633e7f06d79e1da9cd52a",
+    measurementId: "G-15HHZ18TKN"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  
+//for auth using email and password
+
+function signUp(){
+  loading(200)
+  var email = document.getElementById("semail");
+  var password = document.getElementById("spassword");
+  const promise = firebase.auth().createUserWithEmailAndPassword(email.value, password.value);
+  promise.catch(e => alertwithmsginfo(e.message));
+}
+function facebooklogin(){
+  var provider = new firebase.auth.FacebookAuthProvider();
+  const data = firebase.auth().signInWithPopup(provider)
+  .then(result=>{
+    console.log(result)
+  }).catch(err=>{
+    console.log(err)
+  })
+}
+function googlelogin(){
+  var provider = new firebase.auth.GoogleAuthProvider();
+  const data = firebase.auth().signInWithPopup(provider)
+  .then(result=>{
+    console.log(result)
+  }).catch(err=>{
+    console.log(err)
+  })
+}
+function signIn(){
+  loading(200)
+  var email = document.getElementById("signemail");
+  var password = document.getElementById("signpassword");
+  if(email.value !== ''){
+    const promise = firebase.auth().signInWithEmailAndPassword(email.value, password.value);
+  promise.catch(e => alertwithmsginfo(e.message));
+  }else{
+    alertwithmsginfo('please enter correct email address')
+  }
+  
+}
+function alerthide(){
+  document.getElementsByClassName('alert-box')[0].style.display="none";
+}
+function alertwithmsginfo(msg){
+  loading(200);
+  document.getElementsByClassName('alert-box')[0].style.display="block";
+  var cartaddress1 = document.createElement('div')
+  var holder = document.getElementsByClassName('alert-box')[0]
+  var address1 = `<div class="alert-handler">
+    <h2>${msg}</h2>
+    <i class="fa fa-exclamation-circle"></i>
+    <button onclick="alerthide()" class="single">CANCEL</button>
+  </div>`
+  cartaddress1.innerHTML = address1 
+  holder.append(cartaddress1)
+}
+function signOut(){
+  loading()
+  firebase.auth().signOut();
+  alert("Buy ! , see you soon");
+}
+
+firebase.auth().onAuthStateChanged(function(user){
+  if(user){
+    console.log(user)
+    window.location.replace("./index.html") ;
+  }
+});
+
+//for sign up using phone number 
+function sendotp(){
+  showloader();
+  const Number = document.getElementById('phoneno').value;
+  const phoneNumber = '+91'+Number;
+  if(phoneNumber.length === 13){
+    hideloader()
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+        'size': 'normal',
+        'callback': (response) => {
+          // reCAPTCHA solved, allow signInWithPhoneNumber.
+          document.getElementById('otpno').style.display="block";
+          document.getElementById('verifyotp').style.display="block";
+          document.getElementById('Loginphone').style.display="none";
+       
+          // ...
+        },
+        'expired-callback': () => {
+          // Response expired. Ask user to solve reCAPTCHA again.
+          // ...
+          alert('reCAPTCHA expired');
+        }
+      });
+
+      const appVerifier = window.recaptchaVerifier;
+      firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+          .then((confirmationResult) => {
+            window.confirmationResult = confirmationResult;
+            // ...
+          }).catch((error) => {
+            // Error; SMS not sent
+            console.log(error);
+            // ...
+          });
+  }else{
+    alertwithmsginfo('please enter the correct phone number')
+    hideloader()
+  }
+      
+}
+
+
+//for verifying otp 
+function verify(){
+loading()
+const code = document.getElementById('otpno').value;
+confirmationResult.confirm(code).then((result) => {
+  // User signed in successfully.
+  const user = result.user;
+  alertwithmsginfo('logged in, please wait')
+  // ...
+}).catch((error) => {
+  alert(error)
+  // ...
+});
+}
+</script>
+</body>
+</html>
