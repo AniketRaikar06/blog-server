@@ -9,9 +9,9 @@ import { authenticateToken, createNewToken } from '../controller/jwt-controller.
 import upload from '../utils/upload.js';
 
 const router = express.Router();
-const staticPath = path.join(__dirname, "../public");
-//router.use(express.static('public'));
-router.use(express.static(staticPath));
+//const staticPath = path.join(__dirname, "../public");
+router.use(express.static('public'));
+//router.use(express.static(staticPath));
 router.get('/testroute',async(req,res)=>{
     var response={}
     response.error = false;
