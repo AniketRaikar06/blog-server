@@ -15,6 +15,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const staticPath = path.join(__dirname, "../public");
 router.use(express.static(staticPath));
+
+
 router.get('/testroute',async(req,res)=>{
     var response={}
     response.error = false;
