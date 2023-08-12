@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { createPost, updatePost, deletePost, getPost, getAllPosts } from '../controller/post-controller.js';
 import { uploadImage, getImage } from '../controller/image-controller.js';
 import { newComment, getComments, deleteComment } from '../controller/comment-controller.js';
@@ -9,9 +10,11 @@ import { authenticateToken, createNewToken } from '../controller/jwt-controller.
 import upload from '../utils/upload.js';
 
 const router = express.Router();
-//const staticPath = path.join(__dirname, "../public");
-router.use(express.static('public'));
-//router.use(express.static(staticPath));
+//router.use(express.static('./public'));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const staticPath = path.join(__dirname, "../public");
+router.use(express.static(staticPath));
 router.get('/testroute',async(req,res)=>{
     var response={}
     response.error = false;
